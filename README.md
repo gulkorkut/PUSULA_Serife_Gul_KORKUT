@@ -32,7 +32,8 @@ The cleaned and processed dataset will be saved as `cleaned_data.csv`.
 ## Project Structure
 
 ```bash
-├── rehab_case_study_pipeline.py       # Main pipeline code
+├── case.py       # Main pipeline code
+├── case.ipynb       # ipynb version to see plots
 ├── Talent_Academy_Case_DT_2025.xlsx   # Original dataset
 ├── cleaned_data.csv                    # Output of the pipeline
 ├── EDA_Preprocessing_Summary.md        # Summary of EDA & preprocessing
