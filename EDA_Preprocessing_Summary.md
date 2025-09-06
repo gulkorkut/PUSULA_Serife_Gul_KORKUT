@@ -56,8 +56,3 @@ This project analyzes a Physical Medicine & Rehabilitation dataset consisting of
 ## 5. Outcome
 - Cleaned, encoded, and normalized dataset ready for predictive modeling.
 - Saved as `cleaned_data.csv`.
-
-## 6. Next Steps (Optional)
-- Explore correlations between features and target
-- Perform predictive modeling (e.g., regression) on `TedaviSuresi`
-- Further feature engineering based on domain knowledge
