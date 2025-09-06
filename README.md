@@ -1,61 +1,56 @@
-# EDA & Preprocessing Summary
+
+
+
 **Name:** Şerife Gül Korkut  
-**Email:** gulkorkut@example.com  
+**Email:** serifegulkorkut@gmail.com
 
-## 1. Overview
-This project analyzes a Physical Medicine & Rehabilitation dataset consisting of 2235 patients and 13 features. The goal was to perform in-depth EDA and preprocess the data to make it ready for potential predictive modeling, with **TedaviSuresi** as the target variable.
+## Project Overview
+This project analyzes a Physical Medicine & Rehabilitation dataset (2235 patients, 13 features) to perform thorough EDA and preprocess the data for potential predictive modeling. The target variable is `TedaviSuresi`.
 
-## 2. Data Loading
-- The dataset was loaded from `Talent_Academy_Case_DT_2025.xlsx`.
-- Shape: 2235 rows × 13 columns.
+## How to Run the Code
+1. Clone the repository:
+```bash
+git clone https://github.com/gulkorkut/PUSULA_Serife_Gul_KORKUT
+````
 
-## 3. Exploratory Data Analysis (EDA)
-### 3.1 Data Types & Missing Values
-- Numerical: `HastaNo`, `Yas`, `TedaviSuresi`, `UygulamaSuresi`
-- Categorical / Object: `Cinsiyet`, `KanGrubu`, `Uyruk`, `Bolum`, `KronikHastalik`, `Alerji`, `Tanilar`, `TedaviAdi`, `UygulamaYerleri`
-- Missing values:
-  - `Cinsiyet`: 169
-  - `KanGrubu`: 675
-  - `KronikHastalik`: 611
-  - `Alerji`: 944
-  - `Tanilar`: 75
-  - `UygulamaYerleri`: 221
-  - `Bolum`: 11
-- Duplicates: 928 rows → removed, final dataset: 1307 rows.
+Ensure the dataset `Talent_Academy_Case_DT_2025.xlsx` is in the project folder.
 
-### 3.2 Target Distribution
-- Target variable: `TedaviSuresi`
-- Distribution: roughly skewed; visualized using histogram & KDE.
-- Outliers identified via boxplot.
+2. Install required libraries:
 
-### 3.3 Categorical & Multi-label Variables
-- Top 10 chronic diseases: Aritmi, Hiportiroidizm, Limb-Girdle Musküler Distrofi, Astım, Hipertiroidizm, Myastenia gravis, Diyabet, Duchenne Musküler Distrofisi, Fascioscapulohumeral Distrofi, Kalp yetmezliği
-- Top 10 allergies: Polen, POLEN, Toz, TOZ, NOVALGIN, ARVELES, CORASPIN, Sucuk, Yer Fıstığı, SUCUK
-- Top 10 diagnoses: DORSALJİ, DİĞER, tanımlanmamış, Omuzun darbe sendromu, İntervertebral disk bozuklukları, LUMBOSAKRAL BÖLGE, SERVİKOTORASİK BÖLGE, SERVİKAL BÖLGE, Eklem ağrısı, Dorsalji
-- Top 10 application sites: Bel, Boyun, Diz, Sol Omuz Bölgesi, Sağ Omuz Bölgesi, Sırt, Sol El Bilek Bölgesi, Sağ Ayak Bileği Bölgesi, Sol Ayak Bölgesi, Tüm Vücut Bölgesi
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn
+```
 
-### 3.4 Numeric Features
-- `Yas` mean: 47.3, std: 15.2, min: 2, max: 92
-- `UygulamaSuresi` converted to integer for numeric operations
+3. Run the pipeline:
 
-## 4. Preprocessing Steps
-1. **Removed duplicates** to ensure unique patient records.
-2. **Filled missing values**:
-   - Numerical (`Yas`): median
-   - Categorical: most frequent
-   - Multi-label: empty string for missing
-3. **Converted numeric columns**: `TedaviSuresi`, `UygulamaSuresi`
-4. **OneHotEncoding**: `Cinsiyet`, `KanGrubu`, `Uyruk`, `Bolum`, `TedaviAdi`
-5. **MultiLabelBinarizer**: `KronikHastalik`, `Alerji`, `Tanilar`, `UygulamaYerleri`
-6. **Feature Engineering**:
-   - `Yas_Grubu` (Age groups)
-   - `UygulamaSuresi_per_Seans` = `UygulamaSuresi` / `TedaviSuresi`
-7. **Scaling / Normalization**:
-   - `Yas`, `UygulamaSuresi`, `UygulamaSuresi_per_Seans` scaled using MinMaxScaler.
+```bash
+python rehab_case_study_pipeline.py
+```
 
-## 5. Outcome
-- Cleaned, encoded, and normalized dataset ready for predictive modeling.
-- Saved as `cleaned_data.csv`.
+The cleaned and processed dataset will be saved as `cleaned_data.csv`.
+
+## Project Structure
+
+```bash
+├── rehab_case_study_pipeline.py       # Main pipeline code
+├── Talent_Academy_Case_DT_2025.xlsx   # Original dataset
+├── cleaned_data.csv                    # Output of the pipeline
+├── EDA_Preprocessing_Summary.md        # Summary of EDA & preprocessing
+└── README.md                           # This file
+```
+
+## Features Processed
+
+* Missing values handled
+* Numeric conversion for `TedaviSuresi` and `UygulamaSuresi`
+* OneHotEncoding for categorical features
+* MultiLabelBinarizer for multi-label columns
+* Feature engineering: `Yas_Grubu`, `UygulamaSuresi_per_Seans`
+* Scaling (MinMax) for numeric columns
+
+## Notes
+
+* Duplicate rows were removed (928 duplicates)
+* EDA included histograms, heatmaps, and target distribution check
 
 
-I also added .ipynb version to show plots
